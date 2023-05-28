@@ -15,7 +15,7 @@ public class RentalOffice {
     private Integer rentalOfficeNum;
     private String rentalOfficeName;
     private Integer maximumBicycle;
-    @OneToMany(mappedBy = "bicycle")
+    @OneToMany
     private List<Bicycle> bicycleList;
     @OneToMany
     private List<Post> noticeList;
