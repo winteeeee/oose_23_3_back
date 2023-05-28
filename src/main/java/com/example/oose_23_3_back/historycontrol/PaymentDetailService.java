@@ -1,4 +1,4 @@
-package com.example.oose_23_3_back.historyControl;
+package com.example.oose_23_3_back.historycontrol;
 
 import com.example.oose_23_3_back.membercontrol.Member;
 import lombok.RequiredArgsConstructor;
