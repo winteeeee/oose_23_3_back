@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class BicycleControl {
     private final BicycleService bicycleService;
 
-    @PostMapping("/bicycleCreate")
-    public void bicycleCreate(Bicycle bicycle) {
-        this.bicycleService.bicycleCreate(bicycle);
+    @PostMapping("/bicycleSave")
+    public void bicycleSave(Bicycle bicycle) {
+        this.bicycleService.bicycleSave(bicycle);
     }
 }

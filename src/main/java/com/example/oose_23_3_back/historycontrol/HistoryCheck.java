@@ -1,5 +1,8 @@
-package com.example.oose_23_3_back.historyControl;
+package com.example.oose_23_3_back.historycontrol;
 
+import com.example.oose_23_3_back.managementcontrol.Bicycle;
+import com.example.oose_23_3_back.managementcontrol.RentalOffice;
+import com.example.oose_23_3_back.membercontrol.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,13 +17,17 @@ public class HistoryCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer historyId;
-    //TODO private Member member
-    //TODO private Bicycle bictcle
-    private LocalDateTime rentalTime;
-    //TODO private RentalOffice rentalOffice
+    @ManyToOne
+    private Member member;
+    @ManyToOne
+    private Bicycle bicycle;
     @CreatedDate
+    private LocalDateTime rentalTime;
+    @ManyToOne
+    private RentalOffice rentalOffice;
     private LocalDateTime returnTime;
-    //TODO private RentalOffice returnOffice;
+    @ManyToOne
+    private RentalOffice returnOffice;
     private Long rentalPayment;
     @Enumerated(EnumType.STRING)
     private PaymentMethodEnum paymentMethod;

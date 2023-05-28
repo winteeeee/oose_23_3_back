@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class BicycleService {
     private final BicycleRepository bicycleRepository;
 
-    public void bicycleCreate(Bicycle bicycle) {
+    public void bicycleSave(Bicycle bicycle) {
         this.bicycleRepository.save(bicycle);
     }
 }
