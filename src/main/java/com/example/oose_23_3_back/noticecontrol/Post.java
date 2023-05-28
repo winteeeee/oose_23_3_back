@@ -1,5 +1,6 @@
 package com.example.oose_23_3_back.noticecontrol;
 
+import com.example.oose_23_3_back.membercontrol.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,6 @@ public class Post {
     private Post question;
     @OneToMany(mappedBy = "question")
     private List<Post> answer;
-
-    //TODO private Member poster
-    //TODO 대여소에 List<Post> 추가
+    @ManyToOne
+    private Member poster;
 }
