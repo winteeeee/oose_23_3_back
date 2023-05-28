@@ -1,4 +1,4 @@
-package com.example.oose_23_3_back.rentalcontrol;
+package com.example.oose_23_3_back.historyControl;
 
 import jakarta.persistence.*;
 import lombok.Getter;

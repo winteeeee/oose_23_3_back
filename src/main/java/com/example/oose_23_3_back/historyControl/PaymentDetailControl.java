@@ -1,4 +1,4 @@
-package com.example.oose_23_3_back.rentalcontrol;
+package com.example.oose_23_3_back.historyControl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
