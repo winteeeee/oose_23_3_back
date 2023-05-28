@@ -20,4 +20,8 @@ public class HistoryCheckControl {
     public List<HistoryCheck> historyCheckRead(Member member, LocalDateTime startDate, LocalDateTime endDate) {
         return this.historyCheckService.historyCheckRead(member, startDate, endDate);
     }
+
+    public void historyCheckInsert(HistoryCheck historyCheck) {
+        this.historyCheckService.historyCheckInsert(historyCheck);
+    }
 }

@@ -19,4 +19,8 @@ public class HistoryCheckService {
     public List<HistoryCheck> historyCheckRead(Member member, LocalDateTime startDate, LocalDateTime endDate) {
         return this.historyCheckRepository.findByMemberAndRentalTimeAfterAndReturnTimeBefore(member, startDate, endDate);
     }
+
+    public void historyCheckInsert(HistoryCheck historyCheck) {
+        this.historyCheckRepository.save(historyCheck);
+    }
 }
