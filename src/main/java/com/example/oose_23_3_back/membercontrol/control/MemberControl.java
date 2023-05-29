@@ -15,4 +15,6 @@ public class MemberControl {
     public Member memberSelect(Integer memberNumber) {
         return this.memberService.getMember(memberNumber);
     }
+
+    //TODO 전체 멤버 리스트 반환하는 함수 추가
 }

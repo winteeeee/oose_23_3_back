@@ -22,9 +22,5 @@ public class Post {
     @CreatedDate
     private LocalDateTime postDate;
     @ManyToOne
-    private Post question;
-    @OneToMany(mappedBy = "question")
-    private List<Post> answer;
-    @ManyToOne
     private Member poster;
 }

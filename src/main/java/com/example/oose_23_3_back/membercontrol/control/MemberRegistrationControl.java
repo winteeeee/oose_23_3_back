@@ -14,15 +14,6 @@ public class MemberRegistrationControl {
         return this.memberService.idVerification(id);
     }
 
-    private boolean passwordVerification(String password) {
-        return this.memberService.passwordVerification(password);
-    }
-
-    private boolean rentalPasswordVerification(String rentalPassword) {
-        return this.memberService.rentalPasswordVerification(rentalPassword);
-    }
-
-
     @PostMapping("/memberReg")
     public void memberInsert(Member m) {
         this.memberService.insert(m);

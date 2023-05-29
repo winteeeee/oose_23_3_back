@@ -17,8 +17,8 @@ public class RentalControl {
     private final RentalService rentalService;
 
     //자전거 대여
-    public boolean rentalBicycle(Member member, Bicycle bicycle, RentalOffice rentalOffice, Long rentalPayment, PaymentMethodEnum paymentMethod) {
-        return this.rentalService.rentalBicycle(member, bicycle, rentalOffice, rentalPayment, paymentMethod);
+    public boolean rentalBicycle(Bicycle bicycle) {
+        return this.rentalService.rentalBicycle(bicycle);
         //TODO 프론트에서 데이터가 넘어올 땐 String으로 넘어올 것이므로 Enum과 매핑하는 과정 필요할듯
     }
 

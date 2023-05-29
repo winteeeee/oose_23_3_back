@@ -18,16 +18,6 @@ public class MemberService {
         return member.isEmpty();
     }
 
-    public boolean passwordVerification(String password) {
-        Optional<Member> member= Optional.ofNullable(this.memberRepository.findByPassword(password));
-        return member.isEmpty();
-    }
-
-    public boolean rentalPasswordVerification(String rentalPassword) {
-        Optional<Member> member= Optional.ofNullable(this.memberRepository.findByRentalPassword(rentalPassword));
-        return member.isEmpty();
-    }
-
     public Member getMember(Integer memberNumber) {
         Optional<Member> member = this.memberRepository.findById(memberNumber);
         return member.orElse(null);
