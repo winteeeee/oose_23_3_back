@@ -4,17 +4,22 @@ import com.example.oose_23_3_back.membercontrol.service.MemberService;
 import com.example.oose_23_3_back.membercontrol.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 public class MemberControl {
     private final MemberService memberService;
 
-    @GetMapping("/memberRead")
-    public Member memberSelect(Integer memberNumber) {
-        return this.memberService.getMember(memberNumber);
+    @GetMapping("/memberRead/{identification}")
+    public Member memberSelect(@PathVariable("identification") String identification) {
+        return this.memberService.getMember(identification);
     }
 
-    //TODO 전체 멤버 리스트 반환하는 함수 추가
+    public List<Member> memberSelect() {
+        return this.memberService.getMember();
+    }
 }

@@ -20,7 +20,7 @@ public class Member {
     private String name;
     private String phoneNumber;
     private String email;
-    private LocalDateTime birthDate;
+    private String birthDate;
 
     @CreatedDate
     private LocalDateTime registrationDate;

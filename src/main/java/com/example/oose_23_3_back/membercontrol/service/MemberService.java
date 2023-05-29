@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -18,9 +19,13 @@ public class MemberService {
         return member.isEmpty();
     }
 
-    public Member getMember(Integer memberNumber) {
-        Optional<Member> member = this.memberRepository.findById(memberNumber);
+    public Member getMember(String identification) {
+        Optional<Member> member = Optional.ofNullable(this.memberRepository.findByIdentification(identification));
         return member.orElse(null);
+    }
+
+    public List<Member> getMember() {
+        return this.memberRepository.findAll();
     }
 
     public void insert(Member m) {
