@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface HistoryCheckRepository extends JpaRepository<HistoryCheck, Integer> {
     List<HistoryCheck> findByMember(Member member);
-    List<HistoryCheck> findByMemberAndRentalTimeAfterAndReturnTimeBefore(Member member, LocalDateTime startDate, LocalDateTime endDate);
+    List<HistoryCheck> findByRentalTimeAfterAndReturnTimeBefore(LocalDateTime startDate, LocalDateTime endDate);
 }
