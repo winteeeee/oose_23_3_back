@@ -14,11 +14,12 @@ import java.util.List;
 public class MemberControl {
     private final MemberService memberService;
 
-    @GetMapping("/memberRead/{identification}")
+    @GetMapping("/memberSearch/{identification}")
     public Member memberSelect(@PathVariable("identification") String identification) {
         return this.memberService.getMember(identification);
     }
 
+    @GetMapping("/memberFindAll")
     public List<Member> memberSelect() {
         return this.memberService.getMember();
     }
