@@ -4,6 +4,7 @@ import com.example.oose_23_3_back.noticecontrol.service.PostService;
 import com.example.oose_23_3_back.noticecontrol.entity.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,13 @@ public class ManagerSupportControl {
         postService.postNotice(post);
     }
 
-    @GetMapping("/readAllPost")
+    @GetMapping("/noticeFindAll")
     public List<Post> readAllPost() {
-        return postService.readAllPost();
+        return this.postService.readAllPost();
+    }
+
+    @GetMapping("/noticeFind/{postId}")
+    public Post readPost(@PathVariable("postId") Integer postId) {
+        return this.postService.readPost(postId);
     }
 }

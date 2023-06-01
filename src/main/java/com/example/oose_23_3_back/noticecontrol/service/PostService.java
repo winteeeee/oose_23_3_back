@@ -4,6 +4,7 @@ import com.example.oose_23_3_back.noticecontrol.repository.PostRepository;
 import com.example.oose_23_3_back.noticecontrol.entity.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -18,5 +19,9 @@ public class PostService {
 
     public List<Post> readAllPost() {
         return postRepository.findAll();
+    }
+
+    public Post readPost(Integer postId) {
+        return postRepository.findById(postId).orElse(null);
     }
 }
