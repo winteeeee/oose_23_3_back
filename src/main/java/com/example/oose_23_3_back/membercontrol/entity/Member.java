@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer memberNumber;
     private String identification;
     private String password;
     private String rentalPassword;

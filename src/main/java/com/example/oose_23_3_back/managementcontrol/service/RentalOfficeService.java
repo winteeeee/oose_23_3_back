@@ -5,6 +5,8 @@ import com.example.oose_23_3_back.managementcontrol.entity.RentalOffice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class RentalOfficeService {
@@ -12,5 +14,9 @@ public class RentalOfficeService {
 
     public void rentalOfficeCreate(RentalOffice rentalOffice) {
         this.rentalOfficeRepository.save(rentalOffice);
+    }
+
+    public List<RentalOffice> rentalOfficeFindAll() {
+        return rentalOfficeRepository.findAll();
     }
 }

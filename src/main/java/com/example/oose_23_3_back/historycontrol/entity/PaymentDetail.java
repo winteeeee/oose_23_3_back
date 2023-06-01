@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class PaymentDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer paymentDetailNumber;
+    private Long paymentDetailNumber;
     @ManyToOne
     private Member member;
     @ManyToOne

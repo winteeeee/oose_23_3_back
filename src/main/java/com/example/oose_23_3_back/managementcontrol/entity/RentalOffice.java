@@ -12,7 +12,7 @@ import java.util.List;
 public class RentalOffice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer rentalOfficeNum;
+    private Long rentalOfficeNum;
     private String rentalOfficeName;
     private Integer maximumBicycle;
     @OneToMany
