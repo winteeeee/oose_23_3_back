@@ -14,7 +14,7 @@ import java.util.List;
 public class RentalOfficeControl {
     private final RentalOfficeService rentalOfficeService;
 
-    @PostMapping("/rentalOfficeCreate")
+    @PostMapping("/rentalOfficeInsert")
     public void rentalOfficeCreate(RentalOffice rentalOffice) {
         this.rentalOfficeService.rentalOfficeCreate(rentalOffice);
     }

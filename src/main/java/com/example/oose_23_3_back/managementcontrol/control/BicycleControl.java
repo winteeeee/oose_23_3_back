@@ -16,7 +16,7 @@ import java.util.List;
 public class BicycleControl {
     private final BicycleService bicycleService;
 
-    @PostMapping("/bicycleSave")
+    @PostMapping("/bicycleInsert")
     public void bicycleSave(Bicycle bicycle) {
         this.bicycleService.bicycleSave(bicycle);
     }
