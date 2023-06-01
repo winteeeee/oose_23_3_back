@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface HistoryCheckRepository extends JpaRepository<HistoryCheck, Integer> {
+public interface HistoryCheckRepository extends JpaRepository<HistoryCheck, Long> {
     List<HistoryCheck> findByMember(Member member);
     List<HistoryCheck> findByRentalTimeAfterAndReturnTimeBefore(LocalDateTime startDate, LocalDateTime endDate);
 }

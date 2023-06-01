@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PaymentDetailRepository extends JpaRepository<PaymentDetail, Integer> {
+public interface PaymentDetailRepository extends JpaRepository<PaymentDetail, Long> {
     List<PaymentDetail> findByMember(Member member);
     List<PaymentDetail> findByMemberAndPaymentStatus(Member member, StatusEnum statusEnum);
 }

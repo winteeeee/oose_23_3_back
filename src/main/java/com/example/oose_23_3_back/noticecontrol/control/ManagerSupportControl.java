@@ -26,7 +26,7 @@ public class ManagerSupportControl {
     }
 
     @GetMapping("/noticeFind/{postId}")
-    public Post readPost(@PathVariable("postId") Integer postId) {
+    public Post readPost(@PathVariable("postId") Long postId) {
         return this.postService.readPost(postId);
     }
 }

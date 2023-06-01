@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Bicycle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bicycleNumber;
+    private Long bicycleNumber;
     private Boolean isRented;
     private Boolean isBroken;
     @ManyToOne

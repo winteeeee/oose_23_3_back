@@ -21,7 +21,7 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public Post readPost(Integer postId) {
+    public Post readPost(Long postId) {
         return postRepository.findById(postId).orElse(null);
     }
 }

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class HistoryCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer historyId;
+    private Long historyId;
     @ManyToOne
     private Member member;
     @ManyToOne

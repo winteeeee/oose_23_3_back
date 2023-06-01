@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BicycleRepository extends JpaRepository<Bicycle, Integer> {
+public interface BicycleRepository extends JpaRepository<Bicycle, Long> {
     List<Bicycle> findByRentalOffice(RentalOffice rentalOffice);
 }

@@ -29,7 +29,6 @@ public class MemberService {
     }
 
     public void insert(Member m) {
-        m.setRegistrationDate(LocalDateTime.now());
         this.memberRepository.save(m);
     }
 }
