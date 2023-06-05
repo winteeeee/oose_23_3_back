@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 public class RentalOffice {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rentalOfficeNum;
     private String rentalOfficeName;
     private Integer maximumBicycle;

@@ -5,6 +5,7 @@ import com.example.oose_23_3_back.managementcontrol.entity.RentalOffice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class RentalOfficeControl {
     private final RentalOfficeService rentalOfficeService;
 
     @PostMapping("/rentalOfficeInsert")
-    public void rentalOfficeCreate(RentalOffice rentalOffice) {
+    public void rentalOfficeCreate(@RequestBody RentalOffice rentalOffice) {
         this.rentalOfficeService.rentalOfficeCreate(rentalOffice);
     }
 
