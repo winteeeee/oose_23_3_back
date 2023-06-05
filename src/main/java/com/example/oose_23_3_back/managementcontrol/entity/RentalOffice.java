@@ -1,5 +1,6 @@
 package com.example.oose_23_3_back.managementcontrol.entity;
 import com.example.oose_23_3_back.noticecontrol.entity.Post;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,8 @@ public class RentalOffice {
     private Long rentalOfficeNum;
     private String rentalOfficeName;
     private Integer maximumBicycle;
-    @OneToMany
+    @OneToMany(mappedBy = "rentalOffice")
+    @JsonManagedReference
     private List<Bicycle> bicycleList;
     @OneToMany
     private List<Post> noticeList;

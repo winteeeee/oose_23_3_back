@@ -1,5 +1,7 @@
 package com.example.oose_23_3_back.managementcontrol.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,5 +14,6 @@ public class Bicycle {
     private Boolean isRented;
     private Boolean isBroken;
     @ManyToOne
+    @JsonBackReference
     private RentalOffice rentalOffice;
 }
