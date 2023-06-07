@@ -19,7 +19,9 @@ public class Oose233BackApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/**")
+						.allowCredentials(true)
+						.allowedOrigins("http://localhost:3000");
 			}
 		};
 	}
