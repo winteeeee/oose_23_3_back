@@ -16,9 +16,9 @@ import java.util.List;
 public class MemberControl {
     private final MemberService memberService;
 
-    @GetMapping("/memberSearch/{identification}")
-    public Member memberSelect(@PathVariable("identification") String identification) {
-        return this.memberService.getMember(identification);
+    @GetMapping("/memberSearch")
+    public Member memberSelect(@SessionAttribute(name = "member", required = false) Member member) {
+        return member;
     }
 
     @GetMapping("/memberFindAll")
@@ -51,7 +51,7 @@ public class MemberControl {
 
         if (loginTarget != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("sessionId", loginTarget);
+            session.setAttribute("member", loginTarget);
             return true;
         } else {
             return false;
