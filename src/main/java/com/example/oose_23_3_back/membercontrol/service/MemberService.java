@@ -20,7 +20,7 @@ public class MemberService {
     }
 
     public Member getMember(Member m) {
-        return this.memberRepository.findByIdAndPassword(m.getIdentification(), m.getPassword());
+        return this.memberRepository.findByIdentificationAndPassword(m.getIdentification(), m.getPassword());
     }
 
     public Member getMember(String identification) {
