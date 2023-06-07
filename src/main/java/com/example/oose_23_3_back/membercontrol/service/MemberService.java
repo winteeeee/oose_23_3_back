@@ -15,12 +15,16 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public boolean idVerification(String id) {
-        Optional<Member> member = Optional.ofNullable(this.memberRepository.findByIdentification(id));
+        Optional<Member> member = this.memberRepository.findById(id);
         return member.isEmpty();
     }
 
+    public Member getMember(Member m) {
+        return this.memberRepository.findByIdentificationAndPassword(m.getIdentification(), m.getPassword());
+    }
+
     public Member getMember(String identification) {
-        Optional<Member> member = Optional.ofNullable(this.memberRepository.findByIdentification(identification));
+        Optional<Member> member = this.memberRepository.findById(identification);
         return member.orElse(null);
     }
 
