@@ -57,4 +57,10 @@ public class MemberControl {
             return false;
         }
     }
+
+    @PostMapping("/adminLogin")
+    public void adminLogin(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.setAttribute("admin", "");
+    }
 }
