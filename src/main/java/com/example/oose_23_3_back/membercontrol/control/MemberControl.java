@@ -51,16 +51,16 @@ public class MemberControl {
 
         if (loginTarget != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("member", loginTarget);
+
+            if (!loginTarget.getIdentification().equals("admin")) {
+                session.setAttribute("member", loginTarget);
+            } else {
+                session.setAttribute("admin", loginTarget);
+            }
+
             return true;
         } else {
             return false;
         }
-    }
-
-    @PostMapping("/adminLogin")
-    public void adminLogin(HttpServletRequest req) {
-        HttpSession session = req.getSession();
-        session.setAttribute("admin", "");
     }
 }
