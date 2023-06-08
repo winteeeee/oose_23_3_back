@@ -1,12 +1,12 @@
 package com.example.oose_23_3_back.noticecontrol.control;
 
+import com.example.oose_23_3_back.membercontrol.entity.Member;
 import com.example.oose_23_3_back.noticecontrol.service.PostService;
 import com.example.oose_23_3_back.noticecontrol.entity.Post;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
