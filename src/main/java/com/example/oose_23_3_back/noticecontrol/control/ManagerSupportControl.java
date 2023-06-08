@@ -3,8 +3,6 @@ package com.example.oose_23_3_back.noticecontrol.control;
 import com.example.oose_23_3_back.membercontrol.entity.Member;
 import com.example.oose_23_3_back.noticecontrol.service.PostService;
 import com.example.oose_23_3_back.noticecontrol.entity.Post;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +14,15 @@ public class ManagerSupportControl {
     private final PostService postService;
 
     @PostMapping("/postNotice")
-    public void postNotice(Post post) {
+    @ResponseBody
+    public String postNotice(@SessionAttribute(name = "admin", required = false) Member admin, @RequestBody Post post) {
+        if (admin == null) {
+            return "";
+        }
+
+        post.setPoster(admin);
         postService.postNotice(post);
+        return "등록함";
     }
 
     @GetMapping("/noticeFindAll")
