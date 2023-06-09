@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.List;
 
@@ -25,8 +26,9 @@ public class RentalControl {
     }
 
     //자전거 이용 이력 조회(본인)
-    @GetMapping("/bicycleHistoryCheck/{userId}")
-    public List<HistoryCheck> historyChecksRead(@PathVariable("userId") Member member) {
+    @GetMapping("/bicycleHistoryCheck")
+    public List<HistoryCheck> historyChecksRead(@SessionAttribute(name = "member", required = false) Member member) {
+        System.out.println(member);
         return this.historyCheckService.historyCheckRead(member);
     }
 }

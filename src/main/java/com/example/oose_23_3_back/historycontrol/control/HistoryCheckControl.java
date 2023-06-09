@@ -4,9 +4,7 @@ import com.example.oose_23_3_back.historycontrol.entity.HistoryCheck;
 import com.example.oose_23_3_back.historycontrol.service.HistoryCheckService;
 import com.example.oose_23_3_back.membercontrol.entity.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,7 +25,10 @@ public class HistoryCheckControl {
         return this.historyCheckService.historyCheckRead(startDate, endDate);
     }
 
-    public void historyCheckInsert(HistoryCheck historyCheck) {
+    @PostMapping("/historyCheckDummy")
+    public void historyCheckInsert(@SessionAttribute(name = "member", required = false) Member member, @RequestBody HistoryCheck historyCheck) {
+        System.out.println(member);
+        historyCheck.setMember(member);
         this.historyCheckService.historyCheckInsert(historyCheck);
     }
 }
