@@ -22,6 +22,4 @@ public class RentalOffice {
     @OneToMany(mappedBy = "rentalOffice")
     @JsonManagedReference
     private List<Bicycle> bicycleList;
-    @OneToMany
-    private List<Post> noticeList;
 }

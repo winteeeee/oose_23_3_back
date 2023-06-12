@@ -2,11 +2,10 @@ package com.example.oose_23_3_back.historycontrol.control;
 
 import com.example.oose_23_3_back.historycontrol.entity.PaymentDetail;
 import com.example.oose_23_3_back.historycontrol.service.PaymentDetailService;
+import com.example.oose_23_3_back.managementcontrol.service.BicycleService;
 import com.example.oose_23_3_back.membercontrol.entity.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,13 +13,17 @@ import java.util.List;
 @RestController
 public class PaymentDetailControl {
     private final PaymentDetailService paymentDetailService;
+    private final BicycleService bicycleService;
 
-    @GetMapping("/paymentDetailSearch/{userId}")
-    public List<PaymentDetail> paymentDetailRead(@PathVariable("userId") Member member) {
+    @GetMapping("/paymentDetailSearch/{id}")
+    public List<PaymentDetail> paymentDetailRead(@PathVariable("id") Member member) {
         return this.paymentDetailService.paymentDetailRead(member);
     }
 
-    public void paymentDetailInsert(PaymentDetail paymentDetail) {
+    @PostMapping("/paymentDetailInsert")
+    public void paymentDetailInsert(@RequestBody PaymentDetail paymentDetail, @SessionAttribute(name = "member", required = false) Member member) {
+        paymentDetail.setMember(member);
+        paymentDetail.setBicycle(bicycleService.findById(paymentDetail.getBicycle().getBicycleNumber()));
         this.paymentDetailService.paymentDetailInsert(paymentDetail);
     }
 }
