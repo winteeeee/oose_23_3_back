@@ -4,9 +4,7 @@ import com.example.oose_23_3_back.historycontrol.entity.PaymentDetail;
 import com.example.oose_23_3_back.historycontrol.service.PaymentDetailService;
 import com.example.oose_23_3_back.membercontrol.entity.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,11 +13,12 @@ import java.util.List;
 public class PaymentDetailControl {
     private final PaymentDetailService paymentDetailService;
 
-    @GetMapping("/paymentDetailSearch/{userId}")
-    public List<PaymentDetail> paymentDetailRead(@PathVariable("userId") Member member) {
+    @GetMapping("/paymentDetailSearch")
+    public List<PaymentDetail> paymentDetailRead(@SessionAttribute(name = "member", required = false) Member member) {
         return this.paymentDetailService.paymentDetailRead(member);
     }
 
+    @PostMapping("/paymentDetailInsert")
     public void paymentDetailInsert(PaymentDetail paymentDetail) {
         this.paymentDetailService.paymentDetailInsert(paymentDetail);
     }
