@@ -3,11 +3,8 @@ package com.example.oose_23_3_back.managementcontrol.service;
 import com.example.oose_23_3_back.managementcontrol.entity.RentalOffice;
 import com.example.oose_23_3_back.managementcontrol.repository.BicycleRepository;
 import com.example.oose_23_3_back.managementcontrol.entity.Bicycle;
-import com.example.oose_23_3_back.managementcontrol.repository.RentalOfficeRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -34,5 +31,9 @@ public class BicycleService {
         this.bicycleRepository.save(bicycle);
 
         return true;
+    }
+
+    public Bicycle findById(Long id) {
+        return this.bicycleRepository.findById(id).orElse(null);
     }
 }

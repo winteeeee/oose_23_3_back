@@ -32,7 +32,6 @@ public class HistoryCheckControl {
 
     @PostMapping("/historyCheckDummy")
     public void historyCheckInsert(@SessionAttribute(name = "member", required = false) Member member, @RequestBody HistoryCheck historyCheck) {
-        System.out.println(member);
         historyCheck.setMember(member);
         this.historyCheckService.historyCheckInsert(historyCheck);
     }
