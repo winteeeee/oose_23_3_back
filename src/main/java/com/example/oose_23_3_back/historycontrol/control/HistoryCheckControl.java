@@ -21,7 +21,12 @@ public class HistoryCheckControl {
     }
 
     @GetMapping("/historyCheck/{startDate}/{endDate}")
-    public List<HistoryCheck> historyCheckRead(@PathVariable("startDate") LocalDateTime startDate, @PathVariable("endDate") LocalDateTime endDate) {
+    public List<HistoryCheck> historyCheckRead(@PathVariable("startDate") String startPram, @PathVariable("endDate") String endPram) {
+        String[] startPramArray = startPram.split("-");
+        String[] endPramArray = endPram.split("-");
+        LocalDateTime startDate = LocalDateTime.of(Integer.parseInt(startPramArray[0]), Integer.parseInt(startPramArray[1]), Integer.parseInt(startPramArray[2]), 0, 0);
+        LocalDateTime endDate = LocalDateTime.of(Integer.parseInt(endPramArray[0]), Integer.parseInt(endPramArray[1]), Integer.parseInt(endPramArray[2]), 0, 0);
+
         return this.historyCheckService.historyCheckRead(startDate, endDate);
     }
 
