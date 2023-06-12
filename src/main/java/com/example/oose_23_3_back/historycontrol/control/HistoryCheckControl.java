@@ -15,8 +15,8 @@ public class HistoryCheckControl {
     private final HistoryCheckService historyCheckService;
 
     //가입자 및 기간별 이용내역 조회
-    @GetMapping("/historyCheck/{userId}")
-    public List<HistoryCheck> historyCheckRead(@PathVariable("userId") Member member) {
+    @GetMapping("/historyCheck/{id}")
+    public List<HistoryCheck> historyCheckRead(@PathVariable("id") Member member) {
         return this.historyCheckService.historyCheckRead(member);
     }
 
