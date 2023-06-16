@@ -46,7 +46,7 @@ public class MemberControl {
     }
 
     @PostMapping("/login")
-    public boolean memberLogin(@RequestBody Member m, HttpServletRequest req) {
+    public String memberLogin(@RequestBody Member m, HttpServletRequest req) {
         Member loginTarget = this.memberService.getMember(m);
 
         if (loginTarget != null) {
@@ -54,13 +54,13 @@ public class MemberControl {
 
             if (!loginTarget.getIdentification().equals("admin")) {
                 session.setAttribute("member", loginTarget);
+                return "member";
             } else {
                 session.setAttribute("admin", loginTarget);
+                return "admin";
             }
-
-            return true;
         } else {
-            return false;
+            return "fail";
         }
     }
 }
