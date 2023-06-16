@@ -16,8 +16,17 @@ public class BicycleControl {
     private final BicycleService bicycleService;
 
     @PostMapping("/bicycleInsert")
-    public void bicycleSave(@RequestBody Bicycle bicycle) {
+    public String bicycleSave(@RequestBody Bicycle bicycle) {
+        if (!this.bicycleService.idVerification(bicycle.getBicycleNumber())) {
+            return "id";
+        }
+
+        if (!this.bicycleService.isOverMaximumBicycle(bicycle.getRentalOffice().getRentalOfficeNum())) {
+            return "over";
+        }
+
         this.bicycleService.bicycleSave(bicycle);
+        return "success";
     }
 
     @GetMapping("/bicycleSearch/{rentalOfficeId}")

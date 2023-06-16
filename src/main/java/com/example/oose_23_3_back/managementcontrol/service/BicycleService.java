@@ -7,12 +7,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class BicycleService {
     private final BicycleRepository bicycleRepository;
     private final RentalOfficeService rentalOfficeService;
+
+    public boolean idVerification(Long id) {
+        Optional<Bicycle> bicycle = this.bicycleRepository.findById(id);
+        return bicycle.isEmpty();
+    }
+
+    public boolean isOverMaximumBicycle(Long id) {
+        return rentalOfficeService.isOverMaximumBicycle(id);
+    }
 
     public void bicycleSave(Bicycle bicycle) {
         RentalOffice rentalOffice = rentalOfficeService.rentalOfficeFindById(bicycle.getRentalOffice().getRentalOfficeNum());
