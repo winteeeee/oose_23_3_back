@@ -20,16 +20,10 @@ public class BicycleService {
         return bicycle.isEmpty();
     }
 
-    public boolean isOverMaximumBicycle(Long id) {
-        return rentalOfficeService.isOverMaximumBicycle(id);
-    }
-
     public void bicycleSave(Bicycle bicycle) {
         RentalOffice rentalOffice = rentalOfficeService.rentalOfficeFindById(bicycle.getRentalOffice().getRentalOfficeNum());
         bicycle.setRentalOffice(rentalOffice);
-        System.out.println(bicycle);
         this.bicycleRepository.save(bicycle);
-        //TODO 최대 수용 자전거 이상이면 삽입되면 안됨
     }
 
     public List<Bicycle> findBicycleByRentalOffice(RentalOffice rentalOffice) {
