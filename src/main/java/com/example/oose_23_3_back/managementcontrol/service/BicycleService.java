@@ -27,7 +27,7 @@ public class BicycleService {
     }
 
     public boolean rentalBicycle(Bicycle bicycle) {
-        bicycle.setIsRented(true);
+        bicycle.setIsRented(!bicycle.getIsRented());
         this.bicycleRepository.save(bicycle);
 
         return true;
