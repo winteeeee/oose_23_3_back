@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MemberRegistrationControl {
     private final MemberService memberService;
-
-    @GetMapping("/idVerification/{id}")
-    private boolean idVerification(@PathVariable("id") String id) {
-        return this.memberService.idVerification(id);
-    }
-
     @PostMapping("/memberReg")
-    public void memberInsert(@RequestBody Member m) {
-        this.memberService.insert(m);
+    public String memberInsert(@RequestBody Member m) {
+        if (this.memberService.idVerification(m.getIdentification())) {
+            this.memberService.insert(m);
+            return "success";
+        } else {
+            return "fail";
+        }
     }
 }

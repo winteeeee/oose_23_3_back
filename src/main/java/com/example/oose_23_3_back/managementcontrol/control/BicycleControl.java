@@ -3,6 +3,7 @@ package com.example.oose_23_3_back.managementcontrol.control;
 import com.example.oose_23_3_back.managementcontrol.entity.RentalOffice;
 import com.example.oose_23_3_back.managementcontrol.service.BicycleService;
 import com.example.oose_23_3_back.managementcontrol.entity.Bicycle;
+import com.example.oose_23_3_back.managementcontrol.service.RentalOfficeService;
 import jakarta.annotation.Resource;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,20 @@ import java.util.List;
 @RestController
 public class BicycleControl {
     private final BicycleService bicycleService;
+    private final RentalOfficeService rentalOfficeService;
 
     @PostMapping("/bicycleInsert")
-    public void bicycleSave(@RequestBody Bicycle bicycle) {
+    public String bicycleSave(@RequestBody Bicycle bicycle) {
+        if (!this.bicycleService.idVerification(bicycle.getBicycleNumber())) {
+            return "id";
+        }
+
+        if (this.rentalOfficeService.isOverMaximumBicycle(bicycle.getRentalOffice().getRentalOfficeNum())) {
+            return "over";
+        }
+
         this.bicycleService.bicycleSave(bicycle);
+        return "success";
     }
 
     @GetMapping("/bicycleSearch/{rentalOfficeId}")

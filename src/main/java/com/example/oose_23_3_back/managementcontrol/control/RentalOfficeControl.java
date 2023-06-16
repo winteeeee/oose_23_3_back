@@ -14,8 +14,13 @@ public class RentalOfficeControl {
     private final RentalOfficeService rentalOfficeService;
 
     @PostMapping("/rentalOfficeInsert")
-    public void rentalOfficeCreate(@RequestBody RentalOffice rentalOffice) {
+    public String rentalOfficeCreate(@RequestBody RentalOffice rentalOffice) {
+        if (!rentalOfficeService.idVerification(rentalOffice.getRentalOfficeNum())) {
+            return "id";
+        }
+
         this.rentalOfficeService.rentalOfficeCreate(rentalOffice);
+        return "success";
     }
 
     @GetMapping("/rentalOfficeFindAll")
