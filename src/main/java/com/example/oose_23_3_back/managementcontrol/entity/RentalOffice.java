@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@ToString
 @NoArgsConstructor
 public class RentalOffice {
     @Id
