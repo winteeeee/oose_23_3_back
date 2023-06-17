@@ -21,10 +21,16 @@ public class BicycleControl {
             return "id";
         }
 
-        if (this.rentalOfficeService.isOverMaximumBicycle(bicycle.getRentalOffice().getRentalOfficeNum())) {
+        RentalOffice rentalOffice = rentalOfficeService.rentalOfficeFindById(bicycle.getRentalOffice().getRentalOfficeNum());
+        if (rentalOffice == null) {
+            return "rentalOfficeNull";
+        }
+
+        if (this.rentalOfficeService.isOverMaximumBicycle(rentalOffice)) {
             return "over";
         }
 
+        bicycle.setRentalOffice(rentalOffice);
         this.bicycleService.bicycleSave(bicycle);
         return "success";
     }
