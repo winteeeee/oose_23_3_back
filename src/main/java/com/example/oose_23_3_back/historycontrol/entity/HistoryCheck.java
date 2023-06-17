@@ -7,15 +7,15 @@ import com.example.oose_23_3_back.membercontrol.entity.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
 @Entity
-@EntityListeners(AuditingEntityListener.class)
+@ToString
 public class HistoryCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,6 @@ public class HistoryCheck {
     private Member member;
     @ManyToOne
     private Bicycle bicycle;
-    @CreatedDate
     private LocalDateTime rentalTime;
     @ManyToOne
     private RentalOffice rentalOffice;
@@ -35,5 +34,5 @@ public class HistoryCheck {
     @Enumerated(EnumType.STRING)
     private PaymentMethodEnum paymentMethod;
     private Double mileage;
-    private LocalDateTime travelTime;
+    private LocalTime travelTime;
 }
