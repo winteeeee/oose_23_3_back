@@ -45,11 +45,15 @@ public class MemberControl {
         }
     }
 
+    public boolean memberVerification(Member input, Member target) {
+        return input.getIdentification().equals(target.getIdentification()) && input.getPassword().equals(target.getPassword());
+    }
+
     @PostMapping("/login")
     public String memberLogin(@RequestBody Member m, HttpServletRequest req) {
         Member loginTarget = this.memberService.getMember(m);
 
-        if (loginTarget != null) {
+        if (loginTarget != null && memberVerification(m, loginTarget)) {
             HttpSession session = req.getSession();
 
             if (!loginTarget.getIdentification().equals("admin")) {
